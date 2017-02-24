@@ -1,0 +1,93 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Weightlifting.view.chart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="Weightlifting Trainer" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="Progress Chart" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="40" />
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Margin="12,97,12,0" Grid.RowSpan="2">
+
+            <Grid  ScrollViewer.VerticalScrollBarVisibility="Visible" Height="528" HorizontalAlignment="Left" Margin="12,49,0,0" Name="gridchartbar" VerticalAlignment="Top" Width="456">
+
+            </Grid>
+            <Grid  Visibility="Collapsed" Height="528" HorizontalAlignment="Left" Margin="12,49,0,0" Name="gridchartline" VerticalAlignment="Top" Width="468" Grid.Row="1" >
+
+            </Grid>
+
+
+
+
+            <Button IsEnabled="False" Content="Day by Day" FontSize="16" Height="66" HorizontalAlignment="Left" Margin="21,-7,0,0" Name="daybydaybtn" VerticalAlignment="Top" Width="156"  BorderThickness="1" Click="daybydaybtn_Click" />
+
+            <Button Content="Total Weight Chart" Height="66" HorizontalAlignment="Right" Margin="0,-7,31,0" Name="totalbtn" VerticalAlignment="Top" Width="201" FontSize="16"  BorderThickness="1" Click="totalbtn_Click" />
+            <Canvas Visibility="Collapsed" Height="493" HorizontalAlignment="Left" Margin="35,72,0,0" Name="helpchart" VerticalAlignment="Top" Width="396" Background="#D4000000">
+                <Button Name="closeHelp" Canvas.Top="0" Canvas.Left="360" Width="45" Height="45" Click="closeHelp_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Weightlifting;component/Images/appbar.close.rest.png" Stretch="None" />
+                    </Button.Background>
+                </Button>
+                <ScrollViewer Height="447" Width="380" Name="helpscroll" Canvas.Top="40" Canvas.Left="10">
+                    <TextBlock Height="592" Name="helptext" TextWrapping="Wrap" Foreground="White" FontSize="18" Width="357">
+                WelCome to Help Center
+                <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                Thsi chart will show you how much you have been improved so far
+                         <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                      weekly chart
+                         <LineBreak></LineBreak> <LineBreak></LineBreak>
+                       Weekly chart show you your total amont of weight that you have been lifet untill last day of each week. There are two types called snath or clean and jerk and squets.
+                       
+                         <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                      day by day chat
+                         <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                       This chart show you how much you  have lifted for each day as snatch or clean and jerk and suets.   <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                       
+                        <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                      This type of chart will give you idea about how much you have been tranined for each weeks <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                        If you have any trouble contact me .
+                        conatct me: hardsujan@gmail.com</TextBlock>
+                </ScrollViewer>
+            </Canvas>
+        </Grid>
+        
+        
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.back.rest.png" Text="Back" Click="back_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.questionmark.rest.png" Text="Help" Click="help_Click"/>
+            
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>

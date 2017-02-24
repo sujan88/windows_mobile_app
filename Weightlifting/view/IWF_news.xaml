@@ -1,0 +1,111 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Weightlifting.view.IWF_news"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="www.iwf.net" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="IWF news" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="40" />
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Canvas Name="canvas1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                <Canvas.Background>
+                    <ImageBrush ImageSource="/Weightlifting;component/Images/iwf.png" Stretch="None" />
+                </Canvas.Background>
+            <Button Content="Load myblog" Height="72" HorizontalAlignment="Left" Margin="298,6,0,0" Name="loadFeedButton" VerticalAlignment="Top" Width="158" Click="loadFeedButton_Click" FontSize="16" />
+            <Canvas Name="canvas2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0,100,0,0">
+                
+                <ListBox Name="feedListBox" Height="633" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" Width="464" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="feedListBox_SelectionChanged" Opacity="1" OpacityMask="{x:Null}" Canvas.Top="-94">
+                    <ListBox.Background>
+                        <ImageBrush />
+                    </ListBox.Background>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel VerticalAlignment="Top">
+                                <TextBlock TextDecorations="Underline" FontSize="24" Name="feedTitle" TextWrapping="Wrap" Margin="12,0,0,0" HorizontalAlignment="Left" Foreground="GreenYellow"  Text="{Binding Title.Text, Converter={StaticResource RssTextTrimmer}}" FontWeight="Normal" />
+                                <TextBlock Name="feedSummary" TextWrapping="Wrap" Margin="12,0,0,0" Text="{Binding Summary.Text, Converter={StaticResource RssTextTrimmer}}" />
+                                <TextBlock Name="feedPubDate" Foreground="{StaticResource PhoneSubtleBrush}" Margin="12,0,0,10" Text="{Binding PublishDate.DateTime}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+            </Canvas>
+
+                <Canvas Height="400" 
+                    HorizontalAlignment="Stretch" 
+                    Background="Black"
+                   
+                    Name="canvas3" 
+                    VerticalAlignment="Stretch" 
+                    Width="400"
+                    Visibility="Collapsed" Margin="30,106,26,29" >
+                    <Button Name="closeHelp" Canvas.Top="0" Canvas.Left="324" Width="70" Height="62" Click="closeHelp_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Weightlifting;component/Images/appbar.close.rest.png" Stretch="UniformToFill" />
+                        </Button.Background>
+                    </Button>
+                    <ScrollViewer Height="350" Width="388" Name="helpscroll" Canvas.Top="50" Canvas.Left="6" >
+                        <TextBlock Height="600" Name="helptext" Width="400" TextWrapping="Wrap" Foreground="White" FontSize="18" Canvas.Left="40" Canvas.Top="52">
+                WelCome to My BlogSpot
+                <LineBreak></LineBreak>
+                Type your blog spot username in the top of the text box.
+                         <LineBreak></LineBreak>
+                        Ex: http://YOUR_BLOGNAME.blogspot.com. You only need to type "YOUR_BLOGNAME".
+                         <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                       Then Press the load myblog button and you wil see summary of your blogs. 
+                         <LineBreak></LineBreak> <LineBreak></LineBreak>
+                        Click on any of blog top Then It will load the reavant blog with full page
+                        
+                       
+                         <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                       If ypu want to get check the lables of a blog click lable button on  under bar.
+                         <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                        Thank You :)
+                         <LineBreak></LineBreak>
+                         <LineBreak></LineBreak>
+                      contact app  creater : hardsujan@gmail.com
+                        <LineBreak></LineBreak>
+                        sujan duminda</TextBlock>
+                    </ScrollViewer>
+                </Canvas>
+            </Canvas>
+        </Grid>
+    </Grid>
+ 
+    <!--Sample code showing usage of ApplicationBar-->
+ <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.back.rest.png" Text="Back to Home" Click="back_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.questionmark.rest.png" Text="Help" Click="help_Click"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
